@@ -4,40 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
   
-  <!-- PWA Meta Tags -->
+  <!-- PWA Essential Meta Tags -->
   <meta name="theme-color" content="#1a5e2a">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Holy Quran">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Holy Quran">
-  <meta name="description" content="Read and listen to the Holy Quran">
-  
-  <!-- Quran Icon (SVG inline for iOS) -->
-  <link rel="apple-touch-icon" href="data:image/svg+xml,
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-      <defs>
-        <linearGradient id='bg' x1='0%' y1='0%' x2='100%' y2='100%'>
-          <stop offset='0%' style='stop-color:%231a5e2a;stop-opacity:1'/>
-          <stop offset='100%' style='stop-color:%230d3b1a;stop-opacity:1'/>
-        </linearGradient>
-        <linearGradient id='gold' x1='0%' y1='0%' x2='100%' y2='100%'>
-          <stop offset='0%' style='stop-color:%23d4a843;stop-opacity:1'/>
-          <stop offset='100%' style='stop-color:%23b8922e;stop-opacity:1'/>
-        </linearGradient>
-      </defs>
-      <rect width='512' height='512' rx='100' fill='url(%23bg)'/>
-      <path d='M256 80 L360 160 L360 360 L256 440 L152 360 L152 160 Z' fill='url(%23gold)' stroke='%23e8c860' stroke-width='4'/>
-      <path d='M230 150 L230 380 M282 150 L282 380' stroke='%231a5e2a' stroke-width='2' opacity='0.3'/>
-      <text x='256' y='210' font-family='serif' font-size='80' fill='%231a5e2a' text-anchor='middle' font-weight='bold'>﷽</text>
-      <text x='256' y='310' font-family='serif' font-size='50' fill='%231a5e2a' text-anchor='middle'>قرآن</text>
-      <circle cx='256' cy='400' r='15' fill='%23e8c860' opacity='0.8'/>
-    </svg>
-  ">
-  
-  <!-- Manifest for PWA -->
-  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkhvbHkgUXVyYW4iLAogICJzaG9ydF9uYW1lIjogIlF1cmFuIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxYTVlMmEiLAogICJ0aGVtZV9jb2xvciI6ICIjMWE1ZTJhIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sLDxzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgNTEyIDUxMic+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdiZycgeDE9JzAlJyB5MT0nMCUnIHgyPScxMDAlJyB5Mj0nMTAwJSc+PHN0b3Agb2Zmc2V0PScwJScgc3R5bGU9J3N0b3AtY29sb3I6IzFhNWUyYTtzdG9wLW9wYWNpdHk6MScvPjxzdG9wIG9mZnNldD0nMTAwJScgc3R5bGU9J3N0b3AtY29sb3I6IzBkM2IxYTtzdG9wLW9wYWNpdHk6MScvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSdnb2xkJyB4MT0nMCUnIHkxPScwJScgeDI9JzEwMCUnIHkyPScxMDAlJz48c3RvcCBvZmZzZXQ9JzAlJyBzdHlsZT0nc3RvcC1jb2xvcjojZDRhODQzO3N0b3Atb3BhY2l0eToxJy8+PHN0b3Agb2Zmc2V0PScxMDAlJyBzdHlsZT0nc3RvcC1jb2xvcjojYjg5MjJlO3N0b3Atb3BhY2l0eToxJy8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9JzUxMicgaGVpZ2h0PSc1MTInIHJ4PScxMDAnIGZpbGw9J3VybCgjYmcpJy8+PHBhdGggZD0nTTI1NiA4MCBMMzYwIDE2MCBMMzYwIDM2MCBMMjU2IDQ0MCBMMTUyIDM2MCBMMTUyIDE2MCBaJyBmaWxsPSd1cmwoI2dvbGQpJyBzdHJva2U9JyNlOGM4NjAnIHN0cm9rZS13aWR0aD0nNCcvPjxwYXRoIGQ9J00yMzAgMTUwIEwyMzAgMzgwIE0yODIgMTUwIEwyODIgMzgwJyBzdHJva2U9JyMxYTVlMmEnIHN0cm9rZS13aWR0aD0nMicgb3BhY2l0eT0nMC4zJy8+PHRleHQgeD0nMjU2JyB5PScyMTAnIGZvbnQtZmFtaWx5PSdzZXJpZicgZm9udC1zaXplPSc4MCcgZmlsbD0nIzFhNWUyYScgdGV4dC1hbmNob3I9J21pZGRsZScgZm9udC13ZWlnaHQ9J2JvbGQnPvCfu708L3RleHQ+PHRleHQgeD0nMjU2JyB5PSczMTAnIGZvbnQtZmFtaWx5PSdzZXJpZicgZm9udC1zaXplPSc1MCcgZmlsbD0nIzFhNWUyYScgdGV4dC1hbmNob3I9J21pZGRsZSc+2YHZgNinPC90ZXh0PjxjaXJjbGUgY3g9JzI1NicgY3k9JzQwMCcgcj0nMTUnIGZpbGw9JyNlOGM4NjAnIG9wYWNpdHk9JzAuOCcvPjwvc3ZnPiIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0KICBdCn0">
   
   <title>Holy Quran | Read & Listen</title>
+  
+  <!-- Manifest Link -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- iOS Icon -->
+  <link rel="apple-touch-icon" href="/icon-512.png">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <style>
@@ -46,8 +28,6 @@
       padding: 0;
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
-      -webkit-user-select: none;
-      user-select: none;
     }
 
     body {
@@ -58,149 +38,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       overflow: hidden;
-    }
-
-    /* Quran Icon - CSS version for favicon */
-    .quran-icon {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .quran-icon .book {
-      width: 80px;
-      height: 100px;
-      background: linear-gradient(135deg, #d4a843, #b8922e);
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) perspective(200px) rotateY(-5deg);
-      border-radius: 8px 16px 16px 8px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 2px 10px rgba(255,255,255,0.2);
-    }
-
-    .quran-icon .book::before {
-      content: '';
-      position: absolute;
-      left: 8px;
-      top: 10px;
-      bottom: 10px;
-      width: 2px;
-      background: rgba(26, 94, 42, 0.3);
-    }
-
-    .quran-icon .book::after {
-      content: '﷽';
-      position: absolute;
-      left: 50%;
-      top: 25%;
-      transform: translateX(-50%);
-      font-family: serif;
-      font-size: 28px;
-      color: #1a5e2a;
-      font-weight: bold;
-    }
-
-    .quran-icon .text {
-      position: absolute;
-      left: 50%;
-      top: 55%;
-      transform: translateX(-50%);
-      font-family: serif;
-      font-size: 18px;
-      color: #1a5e2a;
-      font-weight: bold;
-    }
-
-    /* Install Banner */
-    .install-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(135deg, #d4a843, #b8922e);
-      color: #1a5e2a;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-      font-weight: 600;
-    }
-
-    .install-banner.show {
-      transform: translateY(0);
-    }
-
-    .install-btn {
-      background: #1a5e2a;
-      color: #d4a843;
-      border: none;
-      padding: 0.5rem 1.5rem;
-      border-radius: 2rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    .close-banner {
-      background: none;
-      border: none;
-      color: #1a5e2a;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0 0.5rem;
-    }
-
-    .loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(13, 59, 26, 0.98);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      transition: opacity 0.5s;
-    }
-
-    .loading-screen .quran-icon {
-      margin-bottom: 2rem;
-    }
-
-    .loading-screen.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .spinner {
-      width: 60px;
-      height: 60px;
-      border: 5px solid rgba(212, 168, 67, 0.3);
-      border-top: 5px solid #d4a843;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: 1rem;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .loading-text {
-      color: #d4a843;
-      font-size: 1.2rem;
-      font-weight: 600;
     }
 
     .quran-container {
@@ -209,9 +47,7 @@
       height: 100vh;
       height: 100dvh;
       background: rgba(255, 252, 245, 0.97);
-      backdrop-filter: blur(20px);
       box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.4);
-      border-radius: 0;
       padding: 1rem 1.2rem;
       display: flex;
       flex-direction: column;
@@ -231,14 +67,52 @@
       }
     }
 
+    .install-prompt {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #1a5e2a, #0d3b1a);
+      color: #d4a843;
+      padding: 1rem 2rem;
+      border-radius: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      animation: slideUp 0.5s ease;
+      border: 2px solid #d4a843;
+    }
+
+    .install-prompt.show {
+      display: flex;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+      to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    }
+
+    .install-prompt button {
+      background: #d4a843;
+      color: #1a5e2a;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
     .app-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 2px solid #e8d5a3;
       padding-bottom: 0.5rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
       flex-shrink: 0;
     }
 
@@ -257,12 +131,6 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 15px rgba(212, 168, 67, 0.4);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-icon::before {
-      content: '﷽';
       font-family: serif;
       font-size: 20px;
       color: #1a5e2a;
@@ -278,7 +146,6 @@
     .header-stats {
       display: flex;
       gap: 0.5rem;
-      align-items: center;
     }
 
     .stat-badge {
@@ -290,15 +157,9 @@
       color: #1a5e2a;
       border: 2px solid #d4a843;
       cursor: pointer;
-      transition: 0.2s;
       display: flex;
       align-items: center;
       gap: 0.3rem;
-    }
-
-    .stat-badge:active {
-      background: #d4a843;
-      color: white;
     }
 
     .controls-row {
@@ -340,7 +201,6 @@
       display: flex;
       align-items: center;
       gap: 0.3rem;
-      white-space: nowrap;
       font-size: 0.85rem;
     }
 
@@ -362,11 +222,6 @@
       border-color: #1a5e2a;
     }
 
-    .control-btn.reciter-btn:active {
-      background: #d4a843;
-      color: #1a5e2a;
-    }
-
     .search-box {
       display: flex;
       gap: 0.5rem;
@@ -380,13 +235,7 @@
       border: 2px solid #d4a843;
       outline: none;
       font-size: 0.9rem;
-      -webkit-user-select: text;
-      user-select: text;
       color: #1a5e2a;
-    }
-
-    .search-input::placeholder {
-      color: #8b7355;
     }
 
     .verses-list {
@@ -397,7 +246,6 @@
       flex-direction: column;
       gap: 0.6rem;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior: contain;
     }
 
     .verse-card {
@@ -408,17 +256,14 @@
       display: flex;
       align-items: flex-start;
       gap: 0.8rem;
-      transition: all 0.2s ease;
       cursor: pointer;
-      position: relative;
-      box-shadow: 0 2px 10px rgba(26, 94, 42, 0.05);
+      transition: all 0.2s ease;
     }
 
     .verse-card:active {
       background: #fefcf7;
       border-color: #d4a843;
       transform: scale(0.98);
-      box-shadow: 0 4px 15px rgba(212, 168, 67, 0.2);
     }
 
     .verse-card.playing {
@@ -446,7 +291,6 @@
       justify-content: center;
       font-size: 0.8rem;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(26, 94, 42, 0.3);
     }
 
     .verse-content {
@@ -458,14 +302,13 @@
     }
 
     .arabic-text {
-      font-family: 'Traditional Arabic', 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', serif;
+      font-family: 'Traditional Arabic', 'Scheherazade New', 'Amiri', serif;
       font-size: 1.7rem;
       line-height: 2.3rem;
       color: #1a3a1a;
       text-align: right;
       direction: rtl;
       font-weight: 500;
-      word-break: break-word;
     }
 
     .translation {
@@ -474,14 +317,6 @@
       line-height: 1.4;
       border-left: 3px solid #d4a843;
       padding-left: 0.7rem;
-    }
-
-    .verse-meta {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      font-size: 0.75rem;
-      color: #8b7355;
     }
 
     .verse-actions {
@@ -498,13 +333,11 @@
       cursor: pointer;
       padding: 0.4rem 0.5rem;
       border-radius: 2rem;
-      transition: 0.2s;
     }
 
     .icon-btn:active {
       color: #d4a843;
       background: rgba(26, 94, 42, 0.1);
-      transform: scale(0.9);
     }
 
     .icon-btn.bookmark-active {
@@ -519,15 +352,7 @@
       font-size: 0.8rem;
       border-top: 2px solid #e8d5a3;
       padding-top: 0.5rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
       flex-shrink: 0;
-    }
-
-    .pagination {
-      display: flex;
-      gap: 0.3rem;
-      align-items: center;
     }
 
     .page-btn {
@@ -538,32 +363,17 @@
       cursor: pointer;
       font-weight: 600;
       color: #1a5e2a;
-      transition: 0.2s;
       font-size: 0.8rem;
-    }
-
-    .page-btn:active {
-      background: #d4a843;
-      color: white;
     }
 
     .page-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      border-color: #ccc;
     }
 
     .audio-status {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
       color: #d4a843;
-      font-size: 0.8rem;
       font-weight: 600;
-    }
-
-    .audio-error {
-      color: #c0392b;
     }
 
     .verses-list::-webkit-scrollbar {
@@ -571,81 +381,44 @@
     }
     .verses-list::-webkit-scrollbar-track {
       background: #faf3e6;
-      border-radius: 10px;
     }
     .verses-list::-webkit-scrollbar-thumb {
       background: #d4a843;
       border-radius: 10px;
     }
-
-    .no-results {
-      text-align: center;
-      padding: 2rem;
-      color: #8b7355;
-      font-style: italic;
-    }
-
-    .offline-badge {
-      background: #e74c3c;
-      color: white;
-      padding: 0.2rem 0.6rem;
-      border-radius: 1rem;
-      font-size: 0.7rem;
-      display: none;
-      margin-left: 0.5rem;
-    }
-
-    .offline-badge.show {
-      display: inline-block;
-    }
   </style>
 </head>
 <body>
 
-<!-- Install Banner -->
-<div class="install-banner" id="installBanner">
+<!-- Install Prompt -->
+<div class="install-prompt" id="installPrompt">
   <span>📱 Install Holy Quran App</span>
-  <div>
-    <button class="install-btn" id="installBtn">Install</button>
-    <button class="close-banner" id="closeBanner">×</button>
-  </div>
-</div>
-
-<div class="loading-screen" id="loadingScreen">
-  <div class="quran-icon">
-    <div class="book">
-      <span class="text">قرآن</span>
-    </div>
-  </div>
-  <div class="spinner"></div>
-  <div class="loading-text">Loading Holy Quran...</div>
+  <button id="installButton">Install</button>
 </div>
 
 <div class="quran-container">
   <div class="app-header">
     <div class="header-title">
-      <div class="app-icon"></div>
-      <h1>Al-Quran Al-Kareem <span class="offline-badge" id="offlineBadge">Offline</span></h1>
+      <div class="app-icon">﷽</div>
+      <h1>Al-Quran Al-Kareem</h1>
     </div>
     <div class="header-stats">
-      <div class="stat-badge" id="bookmarkBadge">
+      <div class="stat-badge">
         <i class="fas fa-bookmark"></i> <span id="bookmarkCount">0</span>
       </div>
-      <div class="stat-badge" id="surahInfo">
+      <div class="stat-badge">
         <i class="fas fa-star"></i> <span id="surahNameDisplay">Al-Fatiha</span>
       </div>
     </div>
   </div>
 
   <div class="controls-row">
-    <select class="surah-select" id="surahSelect">
-      <option value="">Loading surahs...</option>
-    </select>
+    <select class="surah-select" id="surahSelect"></select>
     <button class="control-btn" id="autoPlayBtn">
-      <i class="fas fa-play-circle"></i> <span>Auto</span>
+      <i class="fas fa-play-circle"></i> Auto
     </button>
     <button class="control-btn reciter-btn" id="reciterBtn">
-      <i class="fas fa-microphone"></i> <span>Alafasy</span>
+      <i class="fas fa-microphone"></i> Alafasy
     </button>
     <button class="control-btn" id="stopAudioBtn">
       <i class="fas fa-stop-circle"></i>
@@ -659,16 +432,16 @@
   </div>
 
   <div class="verses-list" id="versesContainer">
-    <div style="text-align:center; padding:2rem; color:#1a5e2a;">Loading verses...</div>
+    <div style="text-align:center; padding:2rem; color:#1a5e2a;">Loading...</div>
   </div>
 
   <div class="footer-bar">
-    <div class="pagination">
+    <div>
       <button class="page-btn" id="prevSurahBtn" disabled><i class="fas fa-chevron-left"></i></button>
-      <span id="pageIndicator">1/114</span>
+      <span id="pageIndicator" style="margin:0 0.5rem;">1/114</span>
       <button class="page-btn" id="nextSurahBtn"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class="audio-status" id="audioStatus">
+    <div class="audio-status">
       <i class="fas fa-volume-up"></i> <span>Tap verse to play</span>
     </div>
     <button class="control-btn" id="clearBookmarksBtn"><i class="fas fa-trash-alt"></i></button>
@@ -676,427 +449,384 @@
 </div>
 
 <script>
-(function() {
-  // ============ PWA INSTALLATION ============
-  let deferredPrompt;
-  const installBanner = document.getElementById('installBanner');
-  const installBtn = document.getElementById('installBtn');
-  const closeBanner = document.getElementById('closeBanner');
+// ============ PWA INSTALLATION ============
+let deferredPrompt;
+const installPrompt = document.getElementById('installPrompt');
+const installButton = document.getElementById('installButton');
 
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
-                       window.navigator.standalone || 
-                       document.referrer.includes('android-app://');
+// Check if already installed
+const isAppInstalled = window.matchMedia('(display-mode: standalone)').matches || 
+                       window.navigator.standalone;
 
-  if (!isStandalone) {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      setTimeout(() => installBanner.classList.add('show'), 2000);
-    });
+// Listen for install prompt
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  
+  // Show the install prompt after 3 seconds
+  if (!isAppInstalled) {
+    setTimeout(() => {
+      installPrompt.classList.add('show');
+    }, 3000);
   }
+  
+  console.log('✅ beforeinstallprompt fired - App is installable!');
+});
 
-  installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installBanner.classList.remove('show');
+// Install button click
+installButton.addEventListener('click', async () => {
+  if (!deferredPrompt) {
+    // Fallback for iOS
+    alert('To install: Tap the Share button and then "Add to Home Screen"');
+    return;
+  }
+  
+  // Show the install prompt
+  deferredPrompt.prompt();
+  
+  // Wait for the user to respond to the prompt
+  const { outcome } = await deferredPrompt.userChoice;
+  console.log(`User response: ${outcome}`);
+  
+  // Clear the deferredPrompt variable
+  deferredPrompt = null;
+  
+  // Hide the install prompt
+  installPrompt.classList.remove('show');
+});
+
+// Hide prompt if app is already installed
+window.addEventListener('appinstalled', () => {
+  console.log('✅ App installed successfully!');
+  installPrompt.classList.remove('show');
+  deferredPrompt = null;
+});
+
+// Check if app was installed previously
+if (isAppInstalled) {
+  console.log('📱 App is running in standalone mode');
+}
+
+// ============ REGISTER SERVICE WORKER ============
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('✅ Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.log('❌ Service Worker registration failed:', error);
+      });
+  });
+}
+
+// ============ QURAN APP LOGIC ============
+const API_BASE = 'https://api.alquran.cloud/v1';
+
+let allSurahs = [];
+let currentSurahNumber = 1;
+let currentSurahData = null;
+let currentAudio = null;
+let autoPlayEnabled = false;
+let bookmarks = new Set(JSON.parse(localStorage.getItem('quranBookmarks') || '[]'));
+let currentReciter = 'ar.alafasy';
+let searchQuery = '';
+
+const reciters = [
+  { id: 'ar.alafasy', name: 'Mishary Alafasy' },
+  { id: 'ar.abdurrahmaansudais', name: 'Abdurrahman Sudais' },
+  { id: 'ar.abdulsamad', name: 'Abdul Basit' },
+  { id: 'ar.hudhaify', name: 'Ali Hudhaify' },
+  { id: 'ar.mahermuaiqly', name: 'Maher Al-Muaiqly' },
+  { id: 'ar.ahmedajamy', name: 'Ahmed Al-Ajamy' },
+];
+
+// DOM Elements
+const surahSelect = document.getElementById('surahSelect');
+const versesContainer = document.getElementById('versesContainer');
+const bookmarkCount = document.getElementById('bookmarkCount');
+const surahNameDisplay = document.getElementById('surahNameDisplay');
+const autoPlayBtn = document.getElementById('autoPlayBtn');
+const reciterBtn = document.getElementById('reciterBtn');
+const stopAudioBtn = document.getElementById('stopAudioBtn');
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const clearSearchBtn = document.getElementById('clearSearchBtn');
+const prevSurahBtn = document.getElementById('prevSurahBtn');
+const nextSurahBtn = document.getElementById('nextSurahBtn');
+const pageIndicator = document.getElementById('pageIndicator');
+const audioStatus = document.querySelector('.audio-status span');
+const clearBookmarksBtn = document.getElementById('clearBookmarksBtn');
+
+// Functions
+function updateBookmarks() {
+  localStorage.setItem('quranBookmarks', JSON.stringify([...bookmarks]));
+  bookmarkCount.textContent = bookmarks.size;
+}
+
+function isBookmarked(surah, verse) {
+  return bookmarks.has(`${surah}:${verse}`);
+}
+
+function toggleBookmark(surah, verse) {
+  const key = `${surah}:${verse}`;
+  bookmarks.has(key) ? bookmarks.delete(key) : bookmarks.add(key);
+  updateBookmarks();
+  searchQuery ? performSearch() : renderVerses(currentSurahData);
+}
+
+function stopAudio() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
+  document.querySelectorAll('.verse-card').forEach(c => c.classList.remove('playing'));
+}
+
+async function getAudioUrl(surah, verse, reciter) {
+  try {
+    const res = await fetch(`${API_BASE}/ayah/${surah}:${verse}/${reciter}`);
+    const data = await res.json();
+    return data?.data?.audio || null;
+  } catch { return null; }
+}
+
+async function playAudio(surah, verse, card) {
+  stopAudio();
+  document.querySelectorAll('.verse-card').forEach(c => c.classList.remove('playing'));
+  
+  if (card) {
+    card.classList.add('playing');
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  
+  audioStatus.textContent = 'Loading...';
+  
+  const url = await getAudioUrl(surah, verse, currentReciter);
+  if (!url) {
+    audioStatus.textContent = '⚠️ Error';
+    setTimeout(() => audioStatus.textContent = 'Tap verse to play', 3000);
+    return;
+  }
+  
+  const audio = new Audio(url);
+  currentAudio = audio;
+  
+  audio.addEventListener('playing', () => {
+    audioStatus.textContent = '▶ Playing...';
+  });
+  
+  audio.addEventListener('ended', () => {
+    card?.classList.remove('playing');
+    audioStatus.textContent = 'Tap verse to play';
+    
+    if (autoPlayEnabled && currentSurahData) {
+      const next = verse + 1;
+      if (next <= currentSurahData.numberOfAyahs) {
+        setTimeout(() => {
+          const nextCard = document.querySelector(`[data-verse="${next}"]`);
+          if (nextCard) playAudio(surah, next, nextCard);
+        }, 300);
+      } else if (currentSurahNumber < 114) {
+        setTimeout(() => loadSurah(currentSurahNumber + 1), 1000);
+      }
     }
   });
-
-  closeBanner.addEventListener('click', () => {
-    installBanner.classList.remove('show');
+  
+  audio.addEventListener('error', () => {
+    audioStatus.textContent = '⚠️ Error';
+    card?.classList.remove('playing');
+    setTimeout(() => audioStatus.textContent = 'Tap verse to play', 3000);
   });
-
-  // ============ ONLINE/OFFLINE ============
-  const offlineBadge = document.getElementById('offlineBadge');
   
-  function updateOnlineStatus() {
-    offlineBadge.classList.toggle('show', !navigator.onLine);
-  }
+  audio.play();
+}
 
-  window.addEventListener('online', updateOnlineStatus);
-  window.addEventListener('offline', updateOnlineStatus);
-  updateOnlineStatus();
+async function fetchSurahs() {
+  try {
+    const res = await fetch(`${API_BASE}/surah`);
+    const data = await res.json();
+    if (data.code === 200) {
+      allSurahs = data.data;
+      surahSelect.innerHTML = allSurahs.map(s => 
+        `<option value="${s.number}">${s.number}. ${s.englishName}</option>`
+      ).join('');
+      surahSelect.value = currentSurahNumber;
+    }
+  } catch (e) { console.error('Failed to load surahs'); }
+}
 
-  // ============ SERVICE WORKER ============
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      const swCode = `
-        const CACHE_NAME = 'quran-app-v2';
-        self.addEventListener('install', (event) => {
-          event.waitUntil(
-            caches.open(CACHE_NAME).then((cache) => {
-              return cache.addAll(['/']);
-            })
-          );
-        });
-        self.addEventListener('fetch', (event) => {
-          event.respondWith(
-            caches.match(event.request).then((response) => {
-              return response || fetch(event.request);
-            })
-          );
-        });
-      `;
+async function fetchSurah(num) {
+  try {
+    const [arabicRes, transRes] = await Promise.all([
+      fetch(`${API_BASE}/surah/${num}`),
+      fetch(`${API_BASE}/surah/${num}/en.sahih`)
+    ]);
+    const arabic = await arabicRes.json();
+    const trans = await transRes.json();
+    
+    if (arabic.code === 200 && trans.code === 200) {
+      return {
+        number: num,
+        name: arabic.data.name,
+        englishName: arabic.data.englishName,
+        numberOfAyahs: arabic.data.numberOfAyahs,
+        verses: arabic.data.ayahs.map((a, i) => ({
+          numberInSurah: a.numberInSurah,
+          arabic: a.text,
+          translation: trans.data.ayahs[i]?.text || '',
+        })),
+      };
+    }
+  } catch {}
+  return null;
+}
 
-      const blob = new Blob([swCode], { type: 'application/javascript' });
-      const swUrl = URL.createObjectURL(blob);
-      
-      navigator.serviceWorker.register(swUrl)
-        .then(() => console.log('✅ Service Worker registered'))
-        .catch(() => console.log('Service Worker registration failed'));
-    });
-  }
-
-  // ============ API CONFIGURATION ============
-  const API_BASE = 'https://api.alquran.cloud/v1';
+function renderVerses(data) {
+  if (!data?.verses) return;
   
-  let allSurahs = [];
-  let currentSurahNumber = 1;
-  let currentSurahData = null;
-  let currentAudio = null;
-  let autoPlayEnabled = false;
-  let bookmarks = new Set(JSON.parse(localStorage.getItem('quranBookmarks') || '[]'));
-  let currentReciter = 'ar.alafasy';
-  let searchQuery = '';
-  let currentPlayingVerseKey = null;
-
-  const reciters = [
-    { id: 'ar.alafasy', name: 'Mishary Alafasy' },
-    { id: 'ar.abdurrahmaansudais', name: 'Abdurrahman Sudais' },
-    { id: 'ar.abdulsamad', name: 'Abdul Basit' },
-    { id: 'ar.hudhaify', name: 'Ali Hudhaify' },
-    { id: 'ar.mahermuaiqly', name: 'Maher Al-Muaiqly' },
-    { id: 'ar.ahmedajamy', name: 'Ahmed Al-Ajamy' },
-  ];
-
-  const dom = {
-    loadingScreen: document.getElementById('loadingScreen'),
-    surahSelect: document.getElementById('surahSelect'),
-    versesContainer: document.getElementById('versesContainer'),
-    bookmarkCount: document.getElementById('bookmarkCount'),
-    surahNameDisplay: document.getElementById('surahNameDisplay'),
-    autoPlayBtn: document.getElementById('autoPlayBtn'),
-    reciterBtn: document.getElementById('reciterBtn'),
-    stopAudioBtn: document.getElementById('stopAudioBtn'),
-    searchInput: document.getElementById('searchInput'),
-    searchBtn: document.getElementById('searchBtn'),
-    clearSearchBtn: document.getElementById('clearSearchBtn'),
-    prevSurahBtn: document.getElementById('prevSurahBtn'),
-    nextSurahBtn: document.getElementById('nextSurahBtn'),
-    pageIndicator: document.getElementById('pageIndicator'),
-    audioStatus: document.getElementById('audioStatus'),
-    clearBookmarksBtn: document.getElementById('clearBookmarksBtn'),
-  };
-
-  // ============ FUNCTIONS ============
-  function saveBookmarks() {
-    localStorage.setItem('quranBookmarks', JSON.stringify([...bookmarks]));
-    dom.bookmarkCount.textContent = bookmarks.size;
-  }
-
-  function isBookmarked(surahNum, verseNum) {
-    return bookmarks.has(`${surahNum}:${verseNum}`);
-  }
-
-  function toggleBookmark(surahNum, verseNum) {
-    const key = `${surahNum}:${verseNum}`;
-    bookmarks.has(key) ? bookmarks.delete(key) : bookmarks.add(key);
-    saveBookmarks();
-    searchQuery ? performSearch() : renderVerses(currentSurahData);
-  }
-
-  function stopAudio() {
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.removeAttribute('src');
-      currentAudio = null;
-    }
-    document.querySelectorAll('.verse-card').forEach(c => c.classList.remove('playing'));
-    currentPlayingVerseKey = null;
-    updateAudioStatus('Tap verse to play');
-  }
-
-  async function getAudioUrl(surahNum, verseNum, reciterId) {
-    try {
-      const res = await fetch(`${API_BASE}/ayah/${surahNum}:${verseNum}/${reciterId}`);
-      const data = await res.json();
-      return data?.data?.audio || null;
-    } catch {
-      return null;
-    }
-  }
-
-  async function playVerseAudio(surahNum, verseNum, cardElement) {
-    stopAudio();
-    document.querySelectorAll('.verse-card').forEach(c => c.classList.remove('playing'));
-    
-    if (cardElement) {
-      cardElement.classList.add('playing');
-      cardElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-    
-    currentPlayingVerseKey = `${surahNum}:${verseNum}`;
-    updateAudioStatus('Loading audio...');
-
-    const audioUrl = await getAudioUrl(surahNum, verseNum, currentReciter);
-    if (!audioUrl) return handleAudioError();
-
-    const audio = new Audio();
-    currentAudio = audio;
-    
-    audio.addEventListener('loadedmetadata', () => {
-      updateAudioStatus('▶ Playing...');
-      audio.play().catch(() => handleAudioError());
-    });
-
-    audio.addEventListener('ended', () => {
-      cardElement?.classList.remove('playing');
-      currentPlayingVerseKey = null;
-      updateAudioStatus('Tap verse to play');
-      
-      if (autoPlayEnabled && currentSurahData) {
-        const next = verseNum + 1;
-        if (next <= currentSurahData.numberOfAyahs) {
-          setTimeout(() => {
-            const nextCard = document.querySelector(`[data-verse="${next}"]`);
-            if (nextCard) playVerseAudio(surahNum, next, nextCard);
-          }, 300);
-        } else if (currentSurahNumber < 114) {
-          setTimeout(() => loadSurah(currentSurahNumber + 1), 1000);
-        }
-      }
-    });
-
-    audio.addEventListener('error', handleAudioError);
-    audio.src = audioUrl;
-    audio.load();
-  }
-
-  function handleAudioError() {
-    updateAudioStatus('⚠️ Audio error');
-    document.querySelectorAll('.verse-card').forEach(c => c.classList.remove('playing'));
-    currentPlayingVerseKey = null;
-    setTimeout(() => updateAudioStatus('Tap verse to play'), 3000);
-  }
-
-  function updateAudioStatus(msg) {
-    const span = dom.audioStatus.querySelector('span');
-    if (span) span.textContent = msg;
-  }
-
-  async function fetchSurahs() {
-    try {
-      const res = await fetch(`${API_BASE}/surah`);
-      const data = await res.json();
-      if (data.code === 200) {
-        allSurahs = data.data;
-        dom.surahSelect.innerHTML = allSurahs.map(s => 
-          `<option value="${s.number}">${s.number}. ${s.englishName}</option>`
-        ).join('');
-        dom.surahSelect.value = currentSurahNumber;
-      }
-    } catch (e) {
-      console.error('Failed to load surahs');
-    }
-  }
-
-  async function fetchSurah(num) {
-    try {
-      const [arabicRes, transRes] = await Promise.all([
-        fetch(`${API_BASE}/surah/${num}`),
-        fetch(`${API_BASE}/surah/${num}/en.sahih`)
-      ]);
-      const arabic = await arabicRes.json();
-      const trans = await transRes.json();
-      
-      if (arabic.code === 200 && trans.code === 200) {
-        return {
-          number: num,
-          name: arabic.data.name,
-          englishName: arabic.data.englishName,
-          numberOfAyahs: arabic.data.numberOfAyahs,
-          verses: arabic.data.ayahs.map((a, i) => ({
-            numberInSurah: a.numberInSurah,
-            arabic: a.text,
-            translation: trans.data.ayahs[i]?.text || '',
-          })),
-        };
-      }
-    } catch {}
-    return null;
-  }
-
-  function renderVerses(data) {
-    if (!data?.verses) {
-      dom.versesContainer.innerHTML = '<div class="no-results">Failed to load</div>';
-      return;
-    }
-
-    currentSurahData = data;
-    dom.surahNameDisplay.textContent = data.englishName;
-    dom.pageIndicator.textContent = `${data.number}/114`;
-    dom.surahSelect.value = data.number;
-    currentSurahNumber = data.number;
-    dom.prevSurahBtn.disabled = currentSurahNumber <= 1;
-    dom.nextSurahBtn.disabled = currentSurahNumber >= 114;
-
-    dom.versesContainer.innerHTML = data.verses.map(v => {
-      const bookmarked = isBookmarked(data.number, v.numberInSurah);
-      return `
-        <div class="verse-card" data-verse="${v.numberInSurah}">
-          <div class="verse-number">${v.numberInSurah}</div>
-          <div class="verse-content">
-            <div class="arabic-text">${v.arabic}</div>
-            <div class="translation">${v.translation}</div>
-            <div class="verse-actions">
-              <button class="icon-btn bookmark-btn ${bookmarked ? 'bookmark-active' : ''}" data-action="bookmark">
-                <i class="fas fa-bookmark"></i>
-              </button>
-              <button class="icon-btn play-btn" data-action="play">
-                <i class="fas fa-play-circle"></i>
-              </button>
-              <button class="icon-btn copy-btn" data-action="copy">
-                <i class="fas fa-copy"></i>
-              </button>
-            </div>
-          </div>
+  currentSurahData = data;
+  surahNameDisplay.textContent = data.englishName;
+  pageIndicator.textContent = `${data.number}/114`;
+  surahSelect.value = data.number;
+  currentSurahNumber = data.number;
+  prevSurahBtn.disabled = currentSurahNumber <= 1;
+  nextSurahBtn.disabled = currentSurahNumber >= 114;
+  
+  versesContainer.innerHTML = data.verses.map(v => `
+    <div class="verse-card" data-verse="${v.numberInSurah}">
+      <div class="verse-number">${v.numberInSurah}</div>
+      <div class="verse-content">
+        <div class="arabic-text">${v.arabic}</div>
+        <div class="translation">${v.translation}</div>
+        <div class="verse-actions">
+          <button class="icon-btn bookmark-btn ${isBookmarked(data.number, v.numberInSurah) ? 'bookmark-active' : ''}" data-action="bookmark">
+            <i class="fas fa-bookmark"></i>
+          </button>
+          <button class="icon-btn play-btn" data-action="play">
+            <i class="fas fa-play-circle"></i>
+          </button>
+          <button class="icon-btn copy-btn" data-action="copy">
+            <i class="fas fa-copy"></i>
+          </button>
         </div>
-      `;
-    }).join('');
-
-    // Attach event listeners
-    dom.versesContainer.querySelectorAll('.verse-card').forEach(card => {
-      const verseNum = parseInt(card.dataset.verse);
-      
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('button')) return;
-        playVerseAudio(data.number, verseNum, card);
-      });
-
-      card.querySelector('[data-action="bookmark"]').addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleBookmark(data.number, verseNum);
-      });
-
-      card.querySelector('[data-action="play"]').addEventListener('click', (e) => {
-        e.stopPropagation();
-        playVerseAudio(data.number, verseNum, card);
-      });
-
-      card.querySelector('[data-action="copy"]').addEventListener('click', (e) => {
-        e.stopPropagation();
-        const verse = data.verses.find(v => v.numberInSurah === verseNum);
-        const text = `${verse.arabic}\n${verse.translation}\n- Quran ${data.number}:${verseNum}`;
-        navigator.clipboard.writeText(text).then(() => {
-          const icon = card.querySelector('.copy-btn i');
-          icon.className = 'fas fa-check';
-          setTimeout(() => icon.className = 'fas fa-copy', 1500);
-        });
-      });
+      </div>
+    </div>
+  `).join('');
+  
+  // Attach events
+  versesContainer.querySelectorAll('.verse-card').forEach(card => {
+    const verseNum = parseInt(card.dataset.verse);
+    
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('button')) playAudio(data.number, verseNum, card);
     });
-
-    dom.versesContainer.scrollTop = 0;
-  }
-
-  async function loadSurah(num, loading = true) {
-    if (loading) dom.loadingScreen.classList.remove('hidden');
-    stopAudio();
-    searchQuery = '';
-    dom.searchInput.value = '';
-    const data = await fetchSurah(num);
-    if (data) renderVerses(data);
-    dom.loadingScreen.classList.add('hidden');
-  }
-
-  function performSearch() {
-    const q = dom.searchInput.value.trim().toLowerCase();
-    if (!q) return renderVerses(currentSurahData);
-    searchQuery = q;
-    const filtered = currentSurahData?.verses?.filter(v => 
-      v.translation.toLowerCase().includes(q) || v.arabic.includes(q)
-    );
-    dom.versesContainer.innerHTML = filtered?.length ? 
-      filtered.map(v => {
-        const bookmarked = isBookmarked(currentSurahData.number, v.numberInSurah);
-        return `<div class="verse-card" data-verse="${v.numberInSurah}">...</div>`;
-      }).join('') : '<div class="no-results">No results</div>';
-  }
-
-  // ============ EVENT LISTENERS ============
-  dom.surahSelect.addEventListener('change', (e) => {
-    const num = parseInt(e.target.value);
-    if (num) loadSurah(num);
+    
+    card.querySelector('[data-action="bookmark"]').addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleBookmark(data.number, verseNum);
+    });
+    
+    card.querySelector('[data-action="play"]').addEventListener('click', (e) => {
+      e.stopPropagation();
+      playAudio(data.number, verseNum, card);
+    });
+    
+    card.querySelector('[data-action="copy"]').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const verse = data.verses.find(v => v.numberInSurah === verseNum);
+      navigator.clipboard.writeText(`${verse.arabic}\n${verse.translation}`);
+    });
   });
+  
+  versesContainer.scrollTop = 0;
+}
 
-  dom.autoPlayBtn.addEventListener('click', () => {
-    autoPlayEnabled = !autoPlayEnabled;
-    dom.autoPlayBtn.classList.toggle('active', autoPlayEnabled);
-  });
+async function loadSurah(num) {
+  stopAudio();
+  const data = await fetchSurah(num);
+  if (data) renderVerses(data);
+}
 
-  dom.reciterBtn.addEventListener('click', () => {
-    const idx = reciters.findIndex(r => r.id === currentReciter);
-    currentReciter = reciters[(idx + 1) % reciters.length].id;
-    dom.reciterBtn.querySelector('span').textContent = reciters[(idx + 1) % reciters.length].name.split(' ')[0];
-    if (currentPlayingVerseKey) {
-      const [s, v] = currentPlayingVerseKey.split(':').map(Number);
-      playVerseAudio(s, v, document.querySelector(`[data-verse="${v}"]`));
-    }
-  });
+function performSearch() {
+  const q = searchInput.value.trim().toLowerCase();
+  if (!q) return renderVerses(currentSurahData);
+  searchQuery = q;
+  const filtered = currentSurahData?.verses?.filter(v => 
+    v.translation.toLowerCase().includes(q) || v.arabic.includes(q)
+  ) || [];
+  
+  versesContainer.innerHTML = filtered.length ? 
+    filtered.map(v => `
+      <div class="verse-card" data-verse="${v.numberInSurah}">
+        <div class="verse-number">${v.numberInSurah}</div>
+        <div class="verse-content">
+          <div class="arabic-text">${v.arabic}</div>
+          <div class="translation">${v.translation}</div>
+        </div>
+      </div>
+    `).join('') : 
+    '<div style="text-align:center; padding:2rem; color:#8b7355;">No results found</div>';
+}
 
-  dom.stopAudioBtn.addEventListener('click', stopAudio);
-  dom.searchBtn.addEventListener('click', performSearch);
-  dom.clearSearchBtn.addEventListener('click', () => {
-    dom.searchInput.value = '';
-    searchQuery = '';
+// Event Listeners
+surahSelect.addEventListener('change', (e) => loadSurah(parseInt(e.target.value)));
+autoPlayBtn.addEventListener('click', () => {
+  autoPlayEnabled = !autoPlayEnabled;
+  autoPlayBtn.classList.toggle('active', autoPlayEnabled);
+});
+reciterBtn.addEventListener('click', () => {
+  const idx = reciters.findIndex(r => r.id === currentReciter);
+  currentReciter = reciters[(idx + 1) % reciters.length].id;
+  reciterBtn.textContent = reciters[(idx + 1) % reciters.length].name.split(' ')[0];
+});
+stopAudioBtn.addEventListener('click', stopAudio);
+searchBtn.addEventListener('click', performSearch);
+searchInput.addEventListener('keypress', (e) => e.key === 'Enter' && performSearch());
+clearSearchBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  searchQuery = '';
+  renderVerses(currentSurahData);
+});
+prevSurahBtn.addEventListener('click', () => currentSurahNumber > 1 && loadSurah(currentSurahNumber - 1));
+nextSurahBtn.addEventListener('click', () => currentSurahNumber < 114 && loadSurah(currentSurahNumber + 1));
+clearBookmarksBtn.addEventListener('click', () => {
+  if (bookmarks.size && confirm('Clear all bookmarks?')) {
+    bookmarks.clear();
+    updateBookmarks();
     renderVerses(currentSurahData);
-  });
+  }
+});
 
-  dom.prevSurahBtn.addEventListener('click', () => {
-    if (currentSurahNumber > 1) loadSurah(currentSurahNumber - 1);
-  });
+// Swipe navigation
+let touchX = 0;
+versesContainer.addEventListener('touchstart', e => touchX = e.changedTouches[0].screenX);
+versesContainer.addEventListener('touchend', e => {
+  const diff = touchX - e.changedTouches[0].screenX;
+  if (Math.abs(diff) > 80) {
+    diff > 0 && currentSurahNumber < 114 ? loadSurah(currentSurahNumber + 1) :
+    diff < 0 && currentSurahNumber > 1 ? loadSurah(currentSurahNumber - 1) : null;
+  }
+});
 
-  dom.nextSurahBtn.addEventListener('click', () => {
-    if (currentSurahNumber < 114) loadSurah(currentSurahNumber + 1);
-  });
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') stopAudio();
+  if (e.key === ' ' && e.target === document.body) {
+    e.preventDefault();
+    currentAudio?.[currentAudio.paused ? 'play' : 'pause']();
+  }
+});
 
-  dom.clearBookmarksBtn.addEventListener('click', () => {
-    if (bookmarks.size && confirm('Clear all bookmarks?')) {
-      bookmarks.clear();
-      saveBookmarks();
-      renderVerses(currentSurahData);
-    }
-  });
-
-  // Swipe navigation
-  let touchX = 0;
-  dom.versesContainer.addEventListener('touchstart', e => touchX = e.changedTouches[0].screenX);
-  dom.versesContainer.addEventListener('touchend', e => {
-    const diff = touchX - e.changedTouches[0].screenX;
-    if (Math.abs(diff) > 80) {
-      diff > 0 && currentSurahNumber < 114 ? loadSurah(currentSurahNumber + 1) :
-      diff < 0 && currentSurahNumber > 1 ? loadSurah(currentSurahNumber - 1) : null;
-    }
-  });
-
-  // Keyboard
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') stopAudio();
-    if (e.key === ' ' && e.target === document.body) {
-      e.preventDefault();
-      currentAudio?.[currentAudio.paused ? 'play' : 'pause']();
-    }
-  });
-
-  // Init
-  (async () => {
-    dom.bookmarkCount.textContent = bookmarks.size;
-    await fetchSurahs();
-    await loadSurah(1, false);
-    dom.loadingScreen.classList.add('hidden');
-  })();
-
+// Init
+(async () => {
+  updateBookmarks();
+  await fetchSurahs();
+  await loadSurah(1);
+  console.log('✅ Quran App Ready');
+  console.log('📱 PWA install prompt will appear in 3 seconds');
 })();
 </script>
 </body>
